@@ -1,0 +1,5 @@
+category: Dotnet Gnome
+requires: cygwin mono libart_lgpl2 gtk-sharp2
+external-source: gnome-sharp2
+sdesc: "Mono libart bindings"
+ldesc: "Mono C-Sharp GNOME library bindings"
