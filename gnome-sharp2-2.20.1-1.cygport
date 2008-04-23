@@ -1,0 +1,43 @@
+ORIG_PN="gnome-sharp"
+inherit gnome.org mono
+
+my_pn="gtk-sharp-2.0"
+
+DESCRIPTION="GNOME C-Sharp bindings"
+HOMEPAGE="http://gtk-sharp.sourceforge.net/"
+
+n=0
+for gspkg in gnome art gconf gnome-vfs
+do
+	PKG_NAMES+=" ${gspkg}-sharp2"
+	PKG_HINTS+=" ${gspkg}"
+	case ${gspkg} in
+	gconf)	PKG_CONTENTS[${n}]+="usr/bin/*${gspkg}sharp*
+                                 usr/lib/${my_pn}/${gspkg}sharp*" ;;
+	gnome)	PKG_CONTENTS[${n}]+="usr/bin/*${gspkg}sharpglue*
+                                 usr/lib/*${gspkg}sharpglue*" ;;
+	esac
+
+	PKG_CONTENTS[${n}]+=" usr/lib/mono/gac/*${gspkg}-sharp*
+	                      usr/lib/mono/${my_pn}/*${gspkg}-sharp*.dll
+	                      usr/lib/pkgconfig/${gspkg}-sharp*.pc"
+
+	case ${gspkg} in
+	gconf) ;;
+	*)	PKG_CONTENTS[${n}]+=" usr/share/gapi-2.0/${gspkg}-api.xml" ;;
+	esac
+
+	let n+=1
+done
+
+PKG_CONTENTS[0]+=" usr/share/doc/"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	# Mono doesn't like these stripped
+	chmod -w ${D}/usr/bin/*sharpglue*.dll
+
+	sed -i -e 's!shouldnotlink=no!shouldnotlink=yes!' ${D}/usr/lib/*.la
+}
