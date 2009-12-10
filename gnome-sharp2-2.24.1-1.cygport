@@ -1,0 +1,35 @@
+ORIG_PN="gnome-sharp"
+inherit mono gnome.org
+
+my_pn="gtk-sharp-2.0"
+
+DESCRIPTION="GNOME C-Sharp bindings"
+HOMEPAGE="http://gtk-sharp.sourceforge.net/"
+
+PATCH_URI="2.24.1-cygwin.patch"
+
+PKG_NAMES="${PN} mono-gnome-sharp2.24 mono-art-sharp2.0 mono-gconf-sharp2.0 \
+           mono-gconf-sharp-peditors2.0 mono-gnome-vfs-sharp2.0"
+mono_gnome_sharp2_24_CONTENTS="usr/*/*gnomesharpglue* \
+			usr/lib/mono/gac/*gnome-sharp/ usr/lib/mono/${my_pn}/*gnome-sharp.dll \
+			usr/lib/pkgconfig/gnome-sharp*.pc usr/share/doc/ usr/share/gapi-2.0/gnome-api.xml"
+mono_art_sharp2_0_CONTENTS="usr/lib/mono/gac/*art-sharp/ usr/lib/mono/${my_pn}/*art-sharp.dll \
+			usr/lib/pkgconfig/art-sharp*.pc usr/share/gapi-2.0/art-api.xml"
+mono_gconf_sharp2_0_CONTENTS="usr/bin/*gconfsharp* usr/lib/${my_pn}/gconfsharp* \
+			usr/lib/mono/gac/*gconf-sharp/ usr/lib/mono/${my_pn}/*gconf-sharp.dll \
+			usr/lib/pkgconfig/gconf-sharp-2.0.pc"
+mono_gconf_sharp_peditors2_0_CONTENTS="usr/lib/mono/gac/*gconf-sharp-peditors/
+			usr/lib/mono/${my_pn}/*gconf-sharp-peditors.dll usr/lib/pkgconfig/gconf-sharp-peditors*.pc"
+mono_gnome_vfs_sharp2_0_CONTENTS="usr/lib/mono/gac/*gnome-vfs-sharp/ \
+			usr/lib/mono/${my_pn}/*gnome-vfs-sharp.dll \
+			usr/lib/pkgconfig/gnome-vfs-sharp*.pc usr/share/gapi-2.0/gnome-vfs-api.xml"
+
+CYGCONF_ARGS="--disable-static"
+MAKEOPTS+=" -j1"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	sed -i -e 's!shouldnotlink=no!shouldnotlink=yes!' ${D}/usr/lib/*.la
+}

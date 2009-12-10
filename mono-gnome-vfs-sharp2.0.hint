@@ -1,5 +1,5 @@
-category: Dotnet Gnome
-requires: mono gnome-vfs2 glib-sharp2
+category: DotNET
+requires: libgnomevfs2_0 mono-glib-sharp2.0
 external-source: gnome-sharp2
 sdesc: "Mono GNOME VFS bindings"
 ldesc: "Mono C-Sharp GNOME library bindings"

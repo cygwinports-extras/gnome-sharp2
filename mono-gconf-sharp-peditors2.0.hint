@@ -1,0 +1,5 @@
+category: DotNET
+requires: mono-gconf-sharp2.0 mono-glib-sharp2.0 mono-gtk-sharp2.0 mono-glade-sharp2.0 mono-gnome-sharp2.24 mono-mscorlib1.0
+external-source: gnome-sharp2
+sdesc: "Mono GConf property editor classes"
+ldesc: "Mono C-Sharp GNOME library bindings"

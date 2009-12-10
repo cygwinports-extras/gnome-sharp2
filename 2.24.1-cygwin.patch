@@ -3,7 +3,7 @@
 @@ -1,3 +1,3 @@
  <configuration>
 -  <dllmap dll="art_lgpl" target="libart_lgpl_2@LIB_PREFIX@.2@LIB_SUFFIX@"/>
-+  <dllmap dll="art_lgpl" target="@LIB_PREFIX@art_lgpl_2@LIB_SONAME@2@LIB_SUFFIX@"/>
++  <dllmap dll="art_lgpl" target="@LIB_PREFIX@art_lgpl_2@LIB_MIDDLE@2@LIB_SUFFIX@"/>
  </configuration>
 --- origsrc/gnome-sharp-2.20.1/configure.in	2008-04-21 14:44:34.000000000 -0500
 +++ src/gnome-sharp-2.20.1/configure.in	2008-04-22 21:03:56.312500000 -0500
@@ -25,19 +25,19 @@
 +case `uname -s` in
 +  Darwin)
 +	LIB_PREFIX=lib
-+	LIB_SONAME=.
++	LIB_MIDDLE=.
  	LIB_SUFFIX=.dylib
 -else
 -	LIB_PREFIX=.so
 +	;;
 +  CYGWIN*)
 +	LIB_PREFIX=cyg
-+	LIB_SONAME=-
++	LIB_MIDDLE=-
 +	LIB_SUFFIX=.dll
 +	;;
 +  *)
 +	LIB_PREFIX=lib
-+	LIB_SONAME=.so.
++	LIB_MIDDLE=.so.
  	LIB_SUFFIX=
 -fi
 +	;;
@@ -49,7 +49,7 @@
  AC_SUBST(GACUTIL)
  AC_SUBST(GACUTIL_FLAGS)
  AC_SUBST(LIB_PREFIX)
-+AC_SUBST(LIB_SONAME)
++AC_SUBST(LIB_MIDDLE)
  AC_SUBST(LIB_SUFFIX)
  AC_SUBST(GENERATED_SOURCES)
  
@@ -58,7 +58,7 @@
 @@ -1,3 +1,3 @@
  <configuration>
 -  <dllmap dll="gconf-2" target="libgconf-2@LIB_PREFIX@.4@LIB_SUFFIX@"/>
-+  <dllmap dll="gconf-2" target="@LIB_PREFIX@gconf-2@LIB_SONAME@4@LIB_SUFFIX@"/>
++  <dllmap dll="gconf-2" target="@LIB_PREFIX@gconf-2@LIB_MIDDLE@4@LIB_SUFFIX@"/>
  </configuration>
 --- origsrc/gnome-sharp-2.20.1/gnome/glue/Makefile.am	2008-03-06 20:32:19.000000000 -0600
 +++ src/gnome-sharp-2.20.1/gnome/glue/Makefile.am	2008-04-22 21:03:56.328125000 -0500
@@ -73,7 +73,7 @@
  	canvasitem.c 		\
 --- origsrc/gnome-sharp-2.20.1/gnome/gnome-sharp.dll.config.in	2008-03-06 20:32:19.000000000 -0600
 +++ src/gnome-sharp-2.20.1/gnome/gnome-sharp.dll.config.in	2008-04-22 21:03:56.328125000 -0500
-@@ -1,11 +1,12 @@
+@@ -1,9 +1,9 @@
  <configuration>
 -  <dllmap dll="libglib-2.0-0.dll" target="libglib-2.0@LIB_PREFIX@.0@LIB_SUFFIX@"/>
 -  <dllmap dll="libgobject-2.0-0.dll" target="libgobject-2.0@LIB_PREFIX@.0@LIB_SUFFIX@"/>
@@ -81,26 +81,21 @@
 -  <dllmap dll="libgtk-win32-2.0-0.dll" target="libgtk-x11-2.0@LIB_PREFIX@.0@LIB_SUFFIX@"/>
 -  <dllmap dll="gnome-2" target="libgnome-2@LIB_PREFIX@.0@LIB_SUFFIX@"/>
 -  <dllmap dll="gnomecanvas-2" target="libgnomecanvas-2@LIB_PREFIX@.0@LIB_SUFFIX@"/>
--  <dllmap dll="gnomeprint-2-2" target="libgnomeprint-2-2@LIB_PREFIX@.0@LIB_SUFFIX@"/>
--  <dllmap dll="gnomeprintui-2-2" target="libgnomeprintui-2-2@LIB_PREFIX@.0@LIB_SUFFIX@"/>
 -  <dllmap dll="gnomeui-2" target="libgnomeui-2@LIB_PREFIX@.0@LIB_SUFFIX@"/>
-+  <dllmap dll="libglib-2.0-0.dll" target="@LIB_PREFIX@glib-2.0@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="libgobject-2.0-0.dll" target="@LIB_PREFIX@gobject-2.0@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="libgthread-2.0-0.dll" target="@LIB_PREFIX@gthread-2.0@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="libgtk-win32-2.0-0.dll" target="@LIB_PREFIX@gtk-x11-2.0@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="gnome-2" target="@LIB_PREFIX@gnome-2@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="gnomecanvas-2" target="@LIB_PREFIX@gnomecanvas-2@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="gnomeprint-2-2" target="@LIB_PREFIX@gnomeprint-2-2@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="gnomeprintui-2-2" target="@LIB_PREFIX@gnomeprintui-2-2@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="gnomeui-2" target="@LIB_PREFIX@gnomeui-2@LIB_SONAME@0@LIB_SUFFIX@"/>
-+  <dllmap dll="gnomesharpglue-2" target="@LIB_PREFIX@gnomesharpglue-2@LIB_SUFFIX@"/>
++  <dllmap dll="libglib-2.0-0.dll" target="@LIB_PREFIX@glib-2.0@LIB_MIDDLE@0@LIB_SUFFIX@"/>
++  <dllmap dll="libgobject-2.0-0.dll" target="@LIB_PREFIX@gobject-2.0@LIB_MIDDLE@0@LIB_SUFFIX@"/>
++  <dllmap dll="libgthread-2.0-0.dll" target="@LIB_PREFIX@gthread-2.0@LIB_MIDDLE@0@LIB_SUFFIX@"/>
++  <dllmap dll="libgtk-win32-2.0-0.dll" target="@LIB_PREFIX@gtk-x11-2.0@LIB_MIDDLE@0@LIB_SUFFIX@"/>
++  <dllmap dll="gnome-2" target="@LIB_PREFIX@gnome-2@LIB_MIDDLE@0@LIB_SUFFIX@"/>
++  <dllmap dll="gnomecanvas-2" target="@LIB_PREFIX@gnomecanvas-2@LIB_MIDDLE@0@LIB_SUFFIX@"/>
++  <dllmap dll="gnomeui-2" target="@LIB_PREFIX@gnomeui-2@LIB_MIDDLE@0@LIB_SUFFIX@"/>
  </configuration>
 --- origsrc/gnome-sharp-2.20.1/gnomevfs/gnome-vfs-sharp.dll.config.in	2008-03-06 20:32:15.000000000 -0600
 +++ src/gnome-sharp-2.20.1/gnomevfs/gnome-vfs-sharp.dll.config.in	2008-04-22 21:03:56.343750000 -0500
 @@ -1,3 +1,3 @@
  <configuration>
 -  <dllmap dll="gnomevfs-2" target="libgnomevfs-2@LIB_PREFIX@.0@LIB_SUFFIX@"/>
-+  <dllmap dll="gnomevfs-2" target="@LIB_PREFIX@gnomevfs-2@LIB_SONAME@0@LIB_SUFFIX@"/>
++  <dllmap dll="gnomevfs-2" target="@LIB_PREFIX@gnomevfs-2@LIB_MIDDLE@0@LIB_SUFFIX@"/>
  </configuration>
 --- origsrc/gnome-sharp-2.20.1/sample/GnomeHelloWorld.cs	2008-03-06 20:32:14.000000000 -0600
 +++ src/gnome-sharp-2.20.1/sample/GnomeHelloWorld.cs	2008-04-22 21:03:56.359375000 -0500
@@ -113,15 +108,3 @@
  		static extern bool g_spawn_command_line_async (string command, IntPtr err);
  		
  		void icon_selected_cb (object obj, Gnome.IconSelectedArgs args)
---- origsrc/gnome-sharp-2.20.1/sample/gconf/Makefile.am	2008-03-06 20:32:14.000000000 -0600
-+++ src/gnome-sharp-2.20.1/sample/gconf/Makefile.am	2008-04-22 21:28:35.250000000 -0500
-@@ -24,9 +24,6 @@
- Settings.cs: $(SCHEMA)
- 	MONO_PATH=$(top_builddir)/gconf/GConf/gconf-sharp.dll:${MONO_PATH} $(RUNTIME) $(GCONFDIR)/tools/gconfsharp-schemagen.exe Sample $(SCHEMA) > Settings.cs
- 
--install-data-hook: 
--	GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule $(SCHEMA)
--
- CLEANFILES = sample.exe Settings.cs
- 
- EXTRA_DIST = main.cs sample.schema sample.glade sample.gladep

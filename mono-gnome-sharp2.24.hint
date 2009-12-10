@@ -1,0 +1,5 @@
+category: DotNET
+requires: libgcc1 libglib2.0_0 libgnome2_0 libgnomecanvas2_0 libgnomeui2_0 mono-glib-sharp2.0 mono-gtk-sharp2.0 mono-art-sharp2.0 mono-gnome-vfs-sharp2.0 mono-pango-sharp2.0 mono-mscorlib1.0
+external-source: gnome-sharp2
+sdesc: "Mono GNOME library bindings"
+ldesc: "Mono C-Sharp GNOME library bindings"

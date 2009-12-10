@@ -1,5 +1,5 @@
-category: Dotnet Gnome
-requires: mono libart_lgpl2 glib-sharp2
+category: DotNET
+requires: libart_lgpl_2_2 mono-glib-sharp2 mono-mscorlib1.0
 external-source: gnome-sharp2
 sdesc: "Mono libart bindings"
 ldesc: "Mono C-Sharp GNOME library bindings"
