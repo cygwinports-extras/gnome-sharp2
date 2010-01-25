@@ -13,12 +13,11 @@ Runtime requirements:
   libgnomeui2_0-2.24.2-1
   libgnomevfs2_0-2.24.2-1
   libgtk2.0_0-2.18.3-1
+  mono-2.4.3.1-1
   mono-glade-sharp2.0-2.12.9-1
   mono-glib-sharp2.0-2.12.9-1
   mono-gtk-sharp2.0-2.12.9-1
-  mono-mscorlib1.0-2.4.3-1
   mono-pango-sharp2.0-2.12.9-1
-  mono-System1.0-2.4.3-1
 
 Build requirements:
 (besides corresponding -devel packages)
