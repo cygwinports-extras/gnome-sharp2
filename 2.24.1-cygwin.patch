@@ -60,17 +60,6 @@
 -  <dllmap dll="gconf-2" target="libgconf-2@LIB_PREFIX@.4@LIB_SUFFIX@"/>
 +  <dllmap dll="gconf-2" target="@LIB_PREFIX@gconf-2@LIB_MIDDLE@4@LIB_SUFFIX@"/>
  </configuration>
---- origsrc/gnome-sharp-2.20.1/gnome/glue/Makefile.am	2008-03-06 20:32:19.000000000 -0600
-+++ src/gnome-sharp-2.20.1/gnome/glue/Makefile.am	2008-04-22 21:03:56.328125000 -0500
-@@ -6,7 +6,7 @@
- TARGET = 
- endif
- 
--libgnomesharpglue_2_la_LDFLAGS = -module -avoid-version -no-undefined
-+libgnomesharpglue_2_la_LDFLAGS = -avoid-version -no-undefined
- 
- libgnomesharpglue_2_la_SOURCES = 	\
- 	canvasitem.c 		\
 --- origsrc/gnome-sharp-2.20.1/gnome/gnome-sharp.dll.config.in	2008-03-06 20:32:19.000000000 -0600
 +++ src/gnome-sharp-2.20.1/gnome/gnome-sharp.dll.config.in	2008-04-22 21:03:56.328125000 -0500
 @@ -1,9 +1,9 @@

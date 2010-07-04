@@ -26,10 +26,3 @@ mono_gnome_vfs_sharp2_0_CONTENTS="usr/lib/mono/gac/*gnome-vfs-sharp/ \
 
 CYGCONF_ARGS="--disable-static"
 MAKEOPTS+=" -j1"
-
-src_install() {
-	cd ${B}
-	cyginstall
-
-	sed -i -e 's!shouldnotlink=no!shouldnotlink=yes!' ${D}/usr/lib/*.la
-}
